@@ -1,4 +1,7 @@
 <?php
+
+namespace \Base\Twitter;
+
 class EpiSequence
 {
   private $timers, $min, $max, $width = 100;
@@ -52,3 +55,4 @@ TPL;
     return $tpl;
   }
 }
+?>
