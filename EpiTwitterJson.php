@@ -1,7 +1,7 @@
 <?php
 
-namespace \Base\Twitter;
-class EpiTwitterJson implements \ArrayAccess, \Countable, \IteratorAggregate
+namespace \Twitter;
+class JSON implements \ArrayAccess, \Countable, \IteratorAggregate
 {
   private $debug;
   private $__resp;
@@ -67,7 +67,7 @@ class EpiTwitterJson implements \ArrayAccess, \Countable, \IteratorAggregate
     if(isset($accessible[$name]) && $accessible[$name])
       return $this->$name;
     elseif(($this->code < 200 || $this->code >= 400) && !isset($accessible[$name]))
-      EpiTwitterException::raise($this->__resp, $this->debug);
+      \Twitter\Exception\TwitterException::raise($this->__resp, $this->debug);
 
     // Call appears ok so we can fill in the response
     $this->response     = json_decode($this->responseText, 1);
