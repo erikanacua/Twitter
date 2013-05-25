@@ -1,21 +1,21 @@
 <?php
 
-namespace \Base\Twitter;
+namespace \Twitter;
 
-class EpiCurlManager
+class CurlManager
 {
   private $key;
-  private $epiCurl;
+  private $Curl;
 
   public function __construct($key)
   {
     $this->key = $key;
-    $this->epiCurl = EpiCurl::getInstance();
+    $this->Curl = Curl::getInstance();
   }
 
   public function __get($name)
   {
-    $responses = $this->epiCurl->getResult($this->key);
+    $responses = $this->Curl->getResult($this->key);
     return isset($responses[$name]) ? $responses[$name] : null;
   }
 
