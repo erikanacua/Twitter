@@ -1,4 +1,7 @@
 <?php
+
+namespace \Base\Twitter;
+
 class EpiOAuth
 {
   public $version = '1.0';
@@ -17,7 +20,7 @@ class EpiOAuth
   protected $useSSL = false;
   protected $followLocation = false;
   protected $headers = array();
-  protected $userAgent = 'EpiOAuth (http://github.com/jmathai/twitter-async/tree/)';
+  protected $userAgent = 'EpiOAuth (http://github.com/kaosdynamics/twitter-async/tree/)';
   protected $connectionTimeout = 5;
   protected $requestTimeout = 30;
 
@@ -387,53 +390,4 @@ class EpiOAuth
     $this->curl = EpiCurl::getInstance();
   }
 }
-
-class EpiOAuthResponse
-{
-  private $__resp;
-  protected $debug = false;
-
-  public function __construct($resp)
-  {
-    $this->__resp = $resp;
-  }
-
-  public function __get($name)
-  {
-    if($this->__resp->code != 200)
-      EpiOAuthException::raise($this->__resp, $this->debug);
-
-    parse_str($this->__resp->data, $result);
-    foreach($result as $k => $v)
-    {
-      $this->$k = $v;
-    }
-
-    return isset($result[$name]) ? $result[$name] : null;
-  }
-
-  public function __toString()
-  {
-    return $this->__resp->data;
-  }
-}
-
-class EpiOAuthException extends Exception
-{
-  public static function raise($response, $debug)
-  {
-    $message = $response->responseText;
-
-    switch($response->code)
-    {
-      case 400:
-        throw new EpiOAuthBadRequestException($message, $response->code);
-      case 401:
-        throw new EpiOAuthUnauthorizedException($message, $response->code);
-      default:
-        throw new EpiOAuthException($message, $response->code);
-    }
-  }
-}
-class EpiOAuthBadRequestException extends EpiOAuthException{}
-class EpiOAuthUnauthorizedException extends EpiOAuthException{}
+?>
