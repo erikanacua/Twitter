@@ -1,8 +1,8 @@
 <?php
 
-namespace \Base\Twitter;
+namespace \Twitter;
 
-class EpiOAuthResponse
+class OAuthResponse
 {
   private $__resp;
   protected $debug = false;
@@ -15,7 +15,7 @@ class EpiOAuthResponse
   public function __get($name)
   {
     if($this->__resp->code != 200)
-      EpiOAuthException::raise($this->__resp, $this->debug);
+      \Twitter\Exception\OAuthException::raise($this->__resp, $this->debug);
 
     parse_str($this->__resp->data, $result);
     foreach($result as $k => $v)
