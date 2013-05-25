@@ -22,7 +22,7 @@ class Curl
   {
     if(self::$singleton == 0)
     {
-      throw new Exception('This class cannot be instantiated by the new keyword.  You must instantiate it using: $obj = EpiCurl::getInstance();');
+      throw new \Exception('This class cannot be instantiated by the new keyword.  You must instantiate it using: $obj = EpiCurl::getInstance();');
     }
 
     $this->mc = curl_multi_init();
@@ -43,7 +43,7 @@ class Curl
     $done = array('handle' => $ch);
     $this->storeResponse($done, false);
     $this->startTimer($key);
-    return new EpiCurlManager($key);
+    return new CurlManager($key);
   }
 
   public function addCurl($ch)
@@ -62,7 +62,7 @@ class Curl
           $code = $this->execStatus = curl_multi_exec($this->mc, $this->running);
       } while ($this->execStatus === CURLM_CALL_MULTI_PERFORM);
 
-      return new EpiCurlManager($key);
+      return new CurlManager($key);
     }
     else
     {
@@ -108,7 +108,7 @@ class Curl
 
   public static function getSequence()
   {
-    return new EpiSequence(self::$timers);
+    return new Sequence(self::$timers);
   }
 
   public static function getTimers()
