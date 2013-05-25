@@ -178,7 +178,7 @@ class Curl
     if(self::$inst == null)
     {
       self::$singleton = 1;
-      self::$inst = new EpiCurl();
+      self::$inst = new Curl();
     }
 
     return self::$inst;
