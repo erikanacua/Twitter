@@ -1,4 +1,7 @@
 <?php
+
+namespace \Base\Twitter;
+
 class EpiCurl
 {
   const timeout = 3;
@@ -182,31 +185,9 @@ class EpiCurl
   }
 }
 
-class EpiCurlManager
-{
-  private $key;
-  private $epiCurl;
-
-  public function __construct($key)
-  {
-    $this->key = $key;
-    $this->epiCurl = EpiCurl::getInstance();
-  }
-
-  public function __get($name)
-  {
-    $responses = $this->epiCurl->getResult($this->key);
-    return isset($responses[$name]) ? $responses[$name] : null;
-  }
-
-  public function __isset($name)
-  {
-    $val = self::__get($name);
-    return empty($val);
-  }
-}
-
 /*
  * Credits:
  *  - (1) Alistair pointed out that curl_multi_add_handle can return CURLM_CALL_MULTI_PERFORM on success.
  */
+
+?>
