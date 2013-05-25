@@ -1,8 +1,8 @@
 <?php
 
-namespace \Base\Twitter;
+namespace \Twitter;
 
-class EpiOAuth
+class OAuth
 {
   public $version = '1.0';
 
@@ -20,7 +20,7 @@ class EpiOAuth
   protected $useSSL = false;
   protected $followLocation = false;
   protected $headers = array();
-  protected $userAgent = 'EpiOAuth (http://github.com/kaosdynamics/twitter-async/tree/)';
+  protected $userAgent = '';
   protected $connectionTimeout = 5;
   protected $requestTimeout = 30;
 
@@ -39,7 +39,7 @@ class EpiOAuth
       $params['oauth_verifier'] = $_GET['oauth_verifier'];
     }
     $resp = $this->httpRequest('POST', $this->getUrl($this->accessTokenUrl), $params);
-    return new EpiOAuthResponse($resp);
+    return new OAuthResponse($resp);
   }
 
   public function getAuthenticateUrl($token = null, $params = null)
@@ -70,7 +70,7 @@ class EpiOAuth
       $params['oauth_callback'] = $this->callback;
     }
     $resp = $this->httpRequest('POST', $this->getUrl($this->requestTokenUrl), $params);
-    return new EpiOAuthResponse($resp);
+    return new OAuthResponse($resp);
   }
 
   public function getUrl($url)
@@ -133,7 +133,7 @@ class EpiOAuth
     $this->callback = $callback;
   }
 
-  public function useSSL($use = false)
+  public function useSSL($use = true)
   {
     $this->useSSL = (bool)$use;
   }
@@ -387,7 +387,7 @@ class EpiOAuth
     $this->consumerKey = $consumerKey;
     $this->consumerSecret = $consumerSecret;
     $this->signatureMethod = $signatureMethod;
-    $this->curl = EpiCurl::getInstance();
+    $this->curl = Curl::getInstance();
   }
 }
 ?>
