@@ -1,8 +1,8 @@
 <?php
 
-namespace \Base\Twitter;
+namespace \Twitter;
 
-class EpiCurl
+class Curl
 {
   const timeout = 3;
   static $inst = null;
