@@ -1,8 +1,8 @@
 <?php
 
-namespace \Base\Twitter;
+namespace \Twitter;
 
-class EpiSequence
+class Sequence
 {
   private $timers, $min, $max, $width = 100;
   public function __construct($timers) 
