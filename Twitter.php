@@ -10,19 +10,19 @@
  *  @author Jaisen Mathai <jaisen@jmathai.com>
  */
  
-namespace \Base\Twitter;
+namespace \Twitter;
 
-class EpiTwitter extends EpiOAuth
+class Twitter extends \Twitter\OAuth
 {
-  const EPITWITTER_SIGNATURE_METHOD = 'HMAC-SHA1';
-  const EPITWITTER_AUTH_OAUTH = 'oauth';
-  const EPITWITTER_AUTH_BASIC = 'basic';
+  const TWITTER_SIGNATURE_METHOD = 'HMAC-SHA1';
+  const TWITTER_AUTH_OAUTH = 'oauth';
+  const TWITTER_AUTH_BASIC = 'basic';
   protected $requestTokenUrl= 'https://api.twitter.com/oauth/request_token';
   protected $accessTokenUrl = 'https://api.twitter.com/oauth/access_token';
   protected $authorizeUrl   = 'https://api.twitter.com/oauth/authorize';
   protected $authenticateUrl= 'https://api.twitter.com/oauth/authenticate';
   protected $apiUrl         = 'http://api.twitter.com';
-  protected $userAgent      = 'EpiTwitter (http://github.com/jmathai/twitter-async/tree/)';
+  protected $userAgent      = '';
   protected $apiVersion     = '1';
   protected $isAsynchronous = false;
   /**
@@ -80,7 +80,7 @@ class EpiTwitter extends EpiOAuth
 
   public function __construct($consumerKey = null, $consumerSecret = null, $oauthToken = null, $oauthTokenSecret = null)
   {
-    parent::__construct($consumerKey, $consumerSecret, self::EPITWITTER_SIGNATURE_METHOD);
+    parent::__construct($consumerKey, $consumerSecret, self::TWITTER_SIGNATURE_METHOD);
     $this->setToken($oauthToken, $oauthTokenSecret);
   }
 
@@ -125,7 +125,7 @@ class EpiTwitter extends EpiOAuth
   private function request($method, $endpoint, $params = null)
   {
     $url = $this->getUrl($this->getApiUrl($endpoint));
-    $resp= new EpiTwitterJson(call_user_func(array($this, 'httpRequest'), $method, $url, $params, $this->isMultipart($params)), $this->debug);
+    $resp= new JSON(call_user_func(array($this, 'httpRequest'), $method, $url, $params, $this->isMultipart($params)), $this->debug);
     if(!$this->isAsynchronous)
       $resp->response;
 
@@ -152,7 +152,7 @@ class EpiTwitter extends EpiOAuth
     if(!empty($username) && !empty($password))
       curl_setopt($ch, CURLOPT_USERPWD, "{$username}:{$password}");
 
-    $resp = new EpiTwitterJson(EpiCurl::getInstance()->addCurl($ch), $this->debug);
+    $resp = new JSON(Curl::getInstance()->addCurl($ch), $this->debug);
     if(!$this->isAsynchronous)
       $resp->response;
 
