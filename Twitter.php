@@ -10,7 +10,7 @@
  *  @author Jaisen Mathai <jaisen@jmathai.com>
  */
  
-namespace \Twitter;
+namespace Twitter;
 
 class Twitter extends OAuth
 {

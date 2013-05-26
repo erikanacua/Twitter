@@ -1,6 +1,6 @@
 <?php
 
-namespace \Twitter\Exception;
+namespace Twitter\Exception;
 class OAuthBadRequest extends \Twitter\Exception\OAuthException{}
 
 ?>

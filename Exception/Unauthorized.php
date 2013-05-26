@@ -1,5 +1,5 @@
 <?php
-namespace \Twitter\Exception;
+namespace Twitter\Exception;
 
 class Unauthorized extends \Twitter\Exception\OAuthException{}
 ?>

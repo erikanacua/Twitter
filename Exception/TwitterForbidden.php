@@ -1,6 +1,6 @@
 <?php
 
-namespace \Twitter\Exception;
+namespace Twitter\Exception;
 class TwitterForbidden extends \Twitter\Exception\TwitterException{}
 
 ?>

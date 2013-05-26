@@ -1,4 +1,4 @@
 <?php
-namespace \Twitter\Exception;
+namespace Twitter\Exception;
 class TwitterUnavailable extends \Twitter\Exception\TwitterException{}
 ?>

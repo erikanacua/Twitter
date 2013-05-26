@@ -1,6 +1,6 @@
 <?php
 
-namespace \Twitter;
+namespace Twitter;
 class JSON implements \ArrayAccess, \Countable, \IteratorAggregate
 {
   private $debug;

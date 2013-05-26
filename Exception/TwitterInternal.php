@@ -1,5 +1,5 @@
 <?php
-namespace \Twitter\Exception;
+namespace Twitter\Exception;
 class TwitterInternal extends \Twitter\Exception\TwitterException{}
 
 ?>
