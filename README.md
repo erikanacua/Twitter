@@ -19,9 +19,7 @@ $twitter->get(...);
 $twitter->post(...);
 $twitter->delete(...);
 ```
-then specify endpoint (see Twitter APIs documentation)
-and the params
-(like described in the <a href="https://github.com/kaosdynamics/Twitter/blob/master/Examples/index.php">example</a>)
+then specify endpoint (see Twitter APIs documentation) and the params (as described in the <a href="https://github.com/kaosdynamics/Twitter/blob/master/Examples/index.php">example</a>)
 
 #### Contributions from 
    * https://github.com/jmathai
