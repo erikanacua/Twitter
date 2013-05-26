@@ -4,6 +4,7 @@ May 26, 2013
 * Added support for media upload
 * Grouped exceptions classes into Exception (using namespaces)
 * Updated ca-bundle to v1.87
+* Added an example
 
 May 25, 2013
 * Initial version from jmathai
