@@ -1,11 +1,11 @@
-Twitter (PHP)
+Twitter APIs (PHP)
 =======================
-derived from <a href="https://github.com/jmathai/twitter-async">jmathai/twitter-async</a>
+*an updated\restructured\cleaned up version of <a href="https://github.com/jmathai/twitter-async">jmathai/twitter-async</a>*
 
 #### A fast and asynchronous PHP Twitter library
-	* PSR-0 Compliant
-	* Supporting API version 1.1
-	* Supporting Media Upload
+* PSR-0 Compliant
+* Supporting API version 1.1 (1.0 will be totally retired on <a href="http://goog.l/gA2nS">June 11, 2013</a>)
+* Supporting Media Upload
 
 
 #### Contributions from 
