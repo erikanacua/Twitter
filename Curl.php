@@ -22,7 +22,7 @@ class Curl
   {
     if(self::$singleton == 0)
     {
-      throw new \Exception('This class cannot be instantiated by the new keyword.  You must instantiate it using: $obj = EpiCurl::getInstance();');
+      throw new \Exception('This class cannot be instantiated by the new keyword.  You must instantiate it using: $obj = Curl::getInstance();');
     }
 
     $this->mc = curl_multi_init();

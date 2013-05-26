@@ -1,7 +1,11 @@
 Twitter (PHP)
 =======================
-Derived from <a href="https://github.com/jmathai/twitter-async">jmathai/twitter-async</a>
+derived from <a href="https://github.com/jmathai/twitter-async">jmathai/twitter-async</a>
+
 #### A fast and asynchronous PHP Twitter library
+	* PSR-0 Compliant
+	* Supporting API version 1.1
+	* Supporting Media Upload
 
 
 #### Contributions from 

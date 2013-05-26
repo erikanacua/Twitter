@@ -269,10 +269,13 @@ class OAuth
     curl_setopt($ch, CURLOPT_POST, 1);
     // php's curl extension automatically sets the content type
     // based on whether the params are in string or array form
-    if($isMultipart)
-      curl_setopt($ch, CURLOPT_POSTFIELDS, $params['request']);
+    if($isMultipart) {
+      $params['request']['status'] = urldecode($params['request']['status']);
+      curl_setopt($ch, CURLOPT_POSTFILEDS, $params['request']);
+    }
     else
       curl_setopt($ch, CURLOPT_POSTFIELDS, $this->buildHttpQueryRaw($params['request']));
+    
     $resp = $this->executeCurl($ch);
     $this->emptyHeaders();
 
@@ -390,4 +393,5 @@ class OAuth
     $this->curl = Curl::getInstance();
   }
 }
+
 ?>

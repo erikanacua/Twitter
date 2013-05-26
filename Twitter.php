@@ -12,7 +12,7 @@
  
 namespace \Twitter;
 
-class Twitter extends \Twitter\OAuth
+class Twitter extends OAuth
 {
   const TWITTER_SIGNATURE_METHOD = 'HMAC-SHA1';
   const TWITTER_AUTH_OAUTH = 'oauth';
@@ -22,14 +22,11 @@ class Twitter extends \Twitter\OAuth
   protected $authorizeUrl   = 'https://api.twitter.com/oauth/authorize';
   protected $authenticateUrl= 'https://api.twitter.com/oauth/authenticate';
   protected $apiUrl         = 'http://api.twitter.com';
-  protected $userAgent      = '';
-  protected $apiVersion     = '1';
-  protected $isAsynchronous = false;
-  /**
-   * The Twitter API version 1.0 search URL.
-   * @var string
-   */
   protected $searchUrl      = 'http://search.twitter.com';
+  protected $uploadUrl      = 'https://upload.twitter.com';
+  protected $userAgent      = '';
+  protected $apiVersion     = '1.1';
+  protected $isAsynchronous = false;
 
   /* OAuth methods */
   public function delete($endpoint, $params = null)
@@ -114,12 +111,16 @@ class Twitter extends \Twitter\OAuth
 
   private function getApiUrl($endpoint)
   {
-    if ($this->apiVersion === '1' && preg_match('@^/search[./]?(?=(json|daily|current|weekly))@', $endpoint))
-    {
-      return $this->searchUrl.$endpoint;
-    }
+    $url = $this->apiUrl.'/'.$this->apiVersion.$endpoint;
 
-    return $this->apiUrl.'/'.$this->apiVersion.$endpoint;
+    if($this->apiVersion == '1') {
+      if(strpos($endpoint, "with_media") !== false) {
+        $url = $this->uploadUrl."/".$this->apiVersion.$endpoint;
+      } elseif(preg_match('@^/search[./]?(?=(json|daily|current|weekly))@', $endpoint)) {
+        $url = $this->searchUrl.$endpoint;
+      }
+    }
+    return $url;
   }
 
   private function request($method, $endpoint, $params = null)
