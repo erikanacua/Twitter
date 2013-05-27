@@ -21,8 +21,8 @@ class Twitter extends OAuth
   protected $accessTokenUrl = 'https://api.twitter.com/oauth/access_token';
   protected $authorizeUrl   = 'https://api.twitter.com/oauth/authorize';
   protected $authenticateUrl= 'https://api.twitter.com/oauth/authenticate';
-  protected $apiUrl         = 'http://api.twitter.com';
-  protected $searchUrl      = 'http://search.twitter.com';
+  protected $apiUrl         = 'https://api.twitter.com';
+  protected $searchUrl      = 'https://search.twitter.com';
   protected $uploadUrl      = 'https://upload.twitter.com';
   protected $userAgent      = '';
   protected $apiVersion     = '1.1';
