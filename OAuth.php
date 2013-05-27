@@ -325,6 +325,11 @@ class OAuth
       $oauth['oauth_verifier'] = $params['oauth_verifier'];
       unset($params['oauth_verifier']);
     }
+    if(isset($params['oauth_callback']))
+    {
+      $oauth['oauth_callback'] = $params['oauth_callback'];
+      unset($params['oauth_callback']);
+    }    
     $oauth['oauth_version'] = $this->version;
     // encode all oauth values
     foreach($oauth as $k => $v)
