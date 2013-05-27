@@ -56,13 +56,7 @@ class OAuth
     if (is_object($token)) $token = $token->oauth_token;
     return $this->getUrl($this->authorizeUrl) . '?oauth_token=' . $token;
   }
-
-  // DEPRECATED in favor of getAuthorizeUrl()
-  public function getAuthorizationUrl($token = null)
-  { 
-    return $this->getAuthorizeUrl($token);
-  }
-
+  
   public function getRequestToken($params = null)
   {
     if (isset($this->callback) && !isset($params['oauth_callback']))
